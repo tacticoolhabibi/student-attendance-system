@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Student Attendance System</title>
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -26,23 +25,29 @@
 
                 <div class="card-body">
 
-                    <form>
+                    <form id="loginForm">
 
                         <div class="mb-3">
                             <label class="form-label">Username</label>
-                            <input type="text"
-                                   class="form-control"
-                                   placeholder="Enter username">
+                            <input
+                                type="text"
+                                id="username"
+                                class="form-control"
+                                placeholder="Enter username">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password"
-                                   class="form-control"
-                                   placeholder="Enter password">
+                            <input
+                                type="password"
+                                id="password"
+                                class="form-control"
+                                placeholder="Enter password">
                         </div>
 
-                        <button class="btn btn-primary w-100">
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-100">
                             Login
                         </button>
 
@@ -57,6 +62,8 @@
     </div>
 
 </div>
+
+<script src="assets/js/login.js"></script>
 
 </body>
 </html>
