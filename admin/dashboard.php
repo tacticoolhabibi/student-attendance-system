@@ -18,6 +18,20 @@ if(!isset($_SESSION['user_id'])){
 </head>
 <body>
 
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+
+        <span class="navbar-brand">
+            Student Attendance System
+        </span>
+
+        <a href="../logout.php" class="btn btn-danger">
+            Logout
+        </a>
+
+    </div>
+</nav>
+
 <div class="container mt-5">
 
     <div class="card shadow">
