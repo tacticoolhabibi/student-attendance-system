@@ -1,3 +1,37 @@
+<?php
+session_start();
+include 'config/db.php';
+
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) == 1) {
+
+        $user = mysqli_fetch_assoc($result);
+
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['fullname'] = $user['fullname'];
+        $_SESSION['role'] = $user['role'];
+
+        header("Location: admin/dashboard.php");
+        exit();
+
+    } else {
+
+        $error = "Invalid username or password";
+
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,24 +59,32 @@
 
                 <div class="card-body">
 
-                    <form id="loginForm">
+                    <?php if($error != "") { ?>
+                        <div class="alert alert-danger">
+                            <?php echo $error; ?>
+                        </div>
+                    <?php } ?>
+
+                    <form method="POST">
 
                         <div class="mb-3">
                             <label class="form-label">Username</label>
                             <input
                                 type="text"
-                                id="username"
+                                name="username"
                                 class="form-control"
-                                placeholder="Enter username">
+                                placeholder="Enter username"
+                                required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Password</label>
                             <input
                                 type="password"
-                                id="password"
+                                name="password"
                                 class="form-control"
-                                placeholder="Enter password">
+                                placeholder="Enter password"
+                                required>
                         </div>
 
                         <button
@@ -62,8 +104,6 @@
     </div>
 
 </div>
-
-<script src="assets/js/login.js"></script>
 
 </body>
 </html>
