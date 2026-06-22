@@ -5,6 +5,34 @@ if(!isset($_SESSION['user_id'])){
     header("Location: ../login.php");
     exit();
 }
+
+include("../config/db.php");
+
+$total_students = mysqli_fetch_assoc(
+    mysqli_query($conn, "SELECT COUNT(*) AS total FROM students")
+)['total'];
+
+$today = date("Y-m-d");
+
+$present_today = mysqli_fetch_assoc(
+    mysqli_query(
+        $conn,
+        "SELECT COUNT(*) AS total
+         FROM attendance
+         WHERE attendance_date='$today'
+         AND status='Present'"
+    )
+)['total'];
+
+$absent_today = mysqli_fetch_assoc(
+    mysqli_query(
+        $conn,
+        "SELECT COUNT(*) AS total
+         FROM attendance
+         WHERE attendance_date='$today'
+         AND status='Absent'"
+    )
+)['total'];
 ?>
 
 <!DOCTYPE html>
@@ -32,26 +60,40 @@ if(!isset($_SESSION['user_id'])){
     </div>
 </nav>
 
-<div class="container mt-5">
+<div class="container mt-4">
 
-    <div class="card shadow">
+    <div class="mb-4">
+        <h2>Welcome, <?php echo $_SESSION['fullname']; ?></h2>
+        <p>Role: <?php echo $_SESSION['role']; ?></p>
+    </div>
 
-        <div class="card-header">
-            Dashboard
+    <div class="row">
+
+        <div class="col-md-4 mb-3">
+            <div class="card text-center shadow">
+                <div class="card-body">
+                    <h5>Total Students</h5>
+                    <h1><?php echo $total_students; ?></h1>
+                </div>
+            </div>
         </div>
 
-        <div class="card-body">
+        <div class="col-md-4 mb-3">
+            <div class="card text-center shadow">
+                <div class="card-body">
+                    <h5>Present Today</h5>
+                    <h1><?php echo $present_today; ?></h1>
+                </div>
+            </div>
+        </div>
 
-            <h3>
-                Welcome,
-                <?php echo $_SESSION['fullname']; ?>
-            </h3>
-
-            <p>
-                Role:
-                <?php echo $_SESSION['role']; ?>
-            </p>
-
+        <div class="col-md-4 mb-3">
+            <div class="card text-center shadow">
+                <div class="card-body">
+                    <h5>Absent Today</h5>
+                    <h1><?php echo $absent_today; ?></h1>
+                </div>
+            </div>
         </div>
 
     </div>
