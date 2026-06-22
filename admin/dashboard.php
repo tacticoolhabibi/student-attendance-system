@@ -36,12 +36,9 @@ $absent_today = mysqli_fetch_assoc(
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -63,6 +60,10 @@ $absent_today = mysqli_fetch_assoc(
                 Students
             </a>
 
+            <a href="attendance.php" class="btn btn-warning">
+                Attendance
+            </a>
+
             <a href="../logout.php" class="btn btn-danger">
                 Logout
             </a>
@@ -74,14 +75,11 @@ $absent_today = mysqli_fetch_assoc(
 
 <div class="container mt-4">
 
-    <div class="mb-4">
-        <h2>Welcome, <?php echo $_SESSION['fullname']; ?></h2>
-        <p>Role: <?php echo $_SESSION['role']; ?></p>
-    </div>
+    <h2>Welcome, <?php echo $_SESSION['fullname']; ?></h2>
 
-    <div class="row">
+    <div class="row mt-4">
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4">
             <div class="card text-center shadow">
                 <div class="card-body">
                     <h5>Total Students</h5>
@@ -90,7 +88,7 @@ $absent_today = mysqli_fetch_assoc(
             </div>
         </div>
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4">
             <div class="card text-center shadow">
                 <div class="card-body">
                     <h5>Present Today</h5>
@@ -99,7 +97,7 @@ $absent_today = mysqli_fetch_assoc(
             </div>
         </div>
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4">
             <div class="card text-center shadow">
                 <div class="card-body">
                     <h5>Absent Today</h5>
