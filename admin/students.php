@@ -10,6 +10,19 @@ include("../config/db.php");
 
 $message = "";
 
+if(isset($_GET['delete'])){
+
+    $id = $_GET['delete'];
+
+    mysqli_query(
+        $conn,
+        "DELETE FROM students WHERE id='$id'"
+    );
+
+    header("Location: students.php");
+    exit();
+}
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $student_id = $_POST['student_id'];
@@ -86,38 +99,22 @@ $students = mysqli_query(
 
                 <div class="mb-3">
                     <label>Student ID</label>
-                    <input
-                        type="text"
-                        name="student_id"
-                        class="form-control"
-                        required>
+                    <input type="text" name="student_id" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
                     <label>Student Name</label>
-                    <input
-                        type="text"
-                        name="name"
-                        class="form-control"
-                        required>
+                    <input type="text" name="name" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
                     <label>Department</label>
-                    <input
-                        type="text"
-                        name="department"
-                        class="form-control"
-                        required>
+                    <input type="text" name="department" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
                     <label>Semester</label>
-                    <input
-                        type="text"
-                        name="semester"
-                        class="form-control"
-                        required>
+                    <input type="text" name="semester" class="form-control" required>
                 </div>
 
                 <button class="btn btn-success">
@@ -147,6 +144,7 @@ $students = mysqli_query(
                         <th>Name</th>
                         <th>Department</th>
                         <th>Semester</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
 
@@ -160,6 +158,15 @@ $students = mysqli_query(
                         <td><?php echo $row['name']; ?></td>
                         <td><?php echo $row['department']; ?></td>
                         <td><?php echo $row['semester']; ?></td>
+
+                        <td>
+                            <a
+                                href="students.php?delete=<?php echo $row['id']; ?>"
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('Delete this student?')">
+                                Delete
+                            </a>
+                        </td>
                     </tr>
 
                 <?php } ?>
