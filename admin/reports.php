@@ -11,6 +11,7 @@ include("../config/db.php");
 $selected_date = "";
 
 if(isset($_GET['attendance_date'])){
+
     $selected_date = $_GET['attendance_date'];
 
     $report = mysqli_query(
@@ -23,52 +24,10 @@ if(isset($_GET['attendance_date'])){
          ORDER BY students.name ASC"
     );
 }
+
+include("../includes/header.php");
+include("../includes/navbar.php");
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance Reports</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-
-        <span class="navbar-brand">
-            Student Attendance System
-        </span>
-
-        <div>
-
-            <a href="dashboard.php" class="btn btn-primary">
-                Dashboard
-            </a>
-
-            <a href="students.php" class="btn btn-success">
-                Students
-            </a>
-
-            <a href="attendance.php" class="btn btn-warning">
-                Attendance
-            </a>
-
-            <a href="reports.php" class="btn btn-info">
-                Reports
-            </a>
-
-            <a href="../logout.php" class="btn btn-danger">
-                Logout
-            </a>
-
-        </div>
-
-    </div>
-</nav>
 
 <div class="container mt-4">
 
@@ -85,21 +44,17 @@ if(isset($_GET['attendance_date'])){
                 <div class="row">
 
                     <div class="col-md-4">
-
                         <input
                             type="date"
                             name="attendance_date"
                             class="form-control"
                             required>
-
                     </div>
 
                     <div class="col-md-2">
-
                         <button class="btn btn-primary">
                             Search
                         </button>
-
                     </div>
 
                 </div>
@@ -136,17 +91,9 @@ if(isset($_GET['attendance_date'])){
 
                         <tr>
 
-                            <td>
-                                <?php echo $row['student_id']; ?>
-                            </td>
-
-                            <td>
-                                <?php echo $row['name']; ?>
-                            </td>
-
-                            <td>
-                                <?php echo $row['status']; ?>
-                            </td>
+                            <td><?php echo $row['student_id']; ?></td>
+                            <td><?php echo $row['name']; ?></td>
+                            <td><?php echo $row['status']; ?></td>
 
                         </tr>
 
@@ -164,5 +111,4 @@ if(isset($_GET['attendance_date'])){
 
 </div>
 
-</body>
-</html>
+<?php include("../includes/footer.php"); ?>
