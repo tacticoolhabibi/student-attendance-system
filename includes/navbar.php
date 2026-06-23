@@ -7,23 +7,23 @@
 
         <div>
 
-            <a href="dashboard.php" class="btn btn-primary">
+            <a href="/attendance_system/admin/dashboard.php" class="btn btn-primary">
                 Dashboard
             </a>
 
-            <a href="students.php" class="btn btn-success">
+            <a href="/attendance_system/admin/students.php" class="btn btn-success">
                 Students
             </a>
 
-            <a href="attendance.php" class="btn btn-warning">
+            <a href="/attendance_system/admin/attendance.php" class="btn btn-warning">
                 Attendance
             </a>
 
-            <a href="reports.php" class="btn btn-info">
+            <a href="/attendance_system/admin/reports.php" class="btn btn-info">
                 Reports
             </a>
 
-            <a href="../logout.php" class="btn btn-danger">
+            <a href="/attendance_system/logout.php" class="btn btn-danger">
                 Logout
             </a>
 

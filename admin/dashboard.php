@@ -33,52 +33,10 @@ $absent_today = mysqli_fetch_assoc(
          AND status='Absent'"
     )
 )['total'];
+
+include("../includes/header.php");
+include("../includes/navbar.php");
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-
-        <span class="navbar-brand">
-            Student Attendance System
-        </span>
-
-        <div>
-
-            <a href="dashboard.php" class="btn btn-primary">
-                Dashboard
-            </a>
-
-            <a href="students.php" class="btn btn-success">
-                Students
-            </a>
-
-            <a href="attendance.php" class="btn btn-warning">
-                Attendance
-            </a>
-
-            <a href="reports.php" class="btn btn-info">
-                Reports
-            </a>
-
-            <a href="../logout.php" class="btn btn-danger">
-                Logout
-            </a>
-
-        </div>
-
-    </div>
-</nav>
 
 <div class="container mt-4">
 
@@ -117,5 +75,4 @@ $absent_today = mysqli_fetch_assoc(
 
 </div>
 
-</body>
-</html>
+<?php include("../includes/footer.php"); ?>
