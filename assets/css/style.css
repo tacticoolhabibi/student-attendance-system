@@ -1,3 +1,84 @@
 body{
-    background-color:#f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.dark-mode{
+    background-color:#121212 !important;
+    color:white !important;
+}
+
+.dark-mode .card{
+    background-color:#1e1e1e;
+    color:white;
+    border:1px solid #333;
+}
+
+.dark-mode .card-header{
+    background-color:#2a2a2a;
+    color:white;
+}
+
+.dark-mode .table{
+    color:white;
+}
+
+.dark-mode .table-bordered{
+    border-color:#444;
+}
+
+.dark-mode .form-control{
+    background-color:#2a2a2a;
+    color:white;
+    border-color:#555;
+}
+
+.dark-mode .form-control:focus{
+    background-color:#2a2a2a;
+    color:white;
+}
+
+.dark-mode .navbar{
+    border-bottom:1px solid #333;
+}
+
+.dark-mode .alert-success{
+    background:#1f5132;
+    color:white;
+    border:none;
+}
+
+.dark-mode table {
+    color: white !important;
+}
+
+.dark-mode .table {
+    color: white !important;
+}
+
+.dark-mode .table th {
+    background-color: #2a2a2a !important;
+    color: white !important;
+    border-color: #444 !important;
+}
+
+.dark-mode .table td {
+    background-color: #1e1e1e !important;
+    color: white !important;
+    border-color: #444 !important;
+}
+
+.dark-mode .table-striped tbody tr:nth-of-type(odd) td {
+    background-color: #252525 !important;
+}
+
+.dark-mode .table-bordered {
+    border-color: #444 !important;
+}
+
+.dark-mode .form-control::placeholder {
+    color: #aaa !important;
+}
+
+.dark-mode .card {
+    box-shadow: 0 0 15px rgba(255,255,255,0.05) !important;
 }
