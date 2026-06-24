@@ -10,6 +10,8 @@ include("../config/db.php");
 
 $message = "";
 
+$teacher_id = $_SESSION['teacher_id'];
+
 if(isset($_GET['delete'])){
 
     $id = $_GET['delete'];
@@ -21,7 +23,9 @@ if(isset($_GET['delete'])){
 
     mysqli_query(
         $conn,
-        "DELETE FROM students WHERE id='$id'"
+        "DELETE FROM students
+         WHERE id='$id'
+         AND teacher_id='$teacher_id'"
     );
 
     header("Location: students.php");
@@ -38,9 +42,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_query(
         $conn,
         "INSERT INTO students
-        (student_id,name,department,semester)
+        (student_id,name,department,semester,teacher_id)
         VALUES
-        ('$student_id','$name','$department','$semester')"
+        (
+            '$student_id',
+            '$name',
+            '$department',
+            '$semester',
+            '$teacher_id'
+        )"
     );
 
     $message = "Student added successfully!";
@@ -57,9 +67,12 @@ if($search != ""){
     $students = mysqli_query(
         $conn,
         "SELECT * FROM students
-         WHERE name LIKE '%$search%'
-         OR student_id LIKE '%$search%'
-         OR department LIKE '%$search%'
+         WHERE teacher_id='$teacher_id'
+         AND (
+            name LIKE '%$search%'
+            OR student_id LIKE '%$search%'
+            OR department LIKE '%$search%'
+         )
          ORDER BY id DESC"
     );
 
@@ -67,7 +80,9 @@ if($search != ""){
 
     $students = mysqli_query(
         $conn,
-        "SELECT * FROM students ORDER BY id DESC"
+        "SELECT * FROM students
+         WHERE teacher_id='$teacher_id'
+         ORDER BY id DESC"
     );
 }
 
