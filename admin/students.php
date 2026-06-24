@@ -46,10 +46,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $message = "Student added successfully!";
 }
 
-$students = mysqli_query(
-    $conn,
-    "SELECT * FROM students ORDER BY id DESC"
-);
+$search = "";
+
+if(isset($_GET['search'])){
+    $search = mysqli_real_escape_string($conn, $_GET['search']);
+}
+
+if($search != ""){
+
+    $students = mysqli_query(
+        $conn,
+        "SELECT * FROM students
+         WHERE name LIKE '%$search%'
+         OR student_id LIKE '%$search%'
+         OR department LIKE '%$search%'
+         ORDER BY id DESC"
+    );
+
+}else{
+
+    $students = mysqli_query(
+        $conn,
+        "SELECT * FROM students ORDER BY id DESC"
+    );
+}
 
 include("../includes/header.php");
 include("../includes/navbar.php");
@@ -110,6 +130,33 @@ include("../includes/navbar.php");
         </div>
 
         <div class="card-body">
+
+            <form method="GET" class="mb-3">
+
+                <div class="row">
+
+                    <div class="col-md-4">
+
+                        <input
+                            type="text"
+                            name="search"
+                            class="form-control"
+                            placeholder="Search by ID, Name or Department"
+                            value="<?php echo htmlspecialchars($search); ?>">
+
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <button class="btn btn-primary">
+                            Search
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
 
             <table class="table table-bordered">
 
