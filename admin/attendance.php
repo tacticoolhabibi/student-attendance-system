@@ -10,13 +10,20 @@ include("../config/db.php");
 
 $message = "";
 
+$teacher_id = $_SESSION['teacher_id'];
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $today = date("Y-m-d");
 
     mysqli_query(
         $conn,
-        "DELETE FROM attendance WHERE attendance_date='$today'"
+        "DELETE attendance
+         FROM attendance
+         INNER JOIN students
+         ON attendance.student_id = students.id
+         WHERE attendance.attendance_date='$today'
+         AND students.teacher_id='$teacher_id'"
     );
 
     foreach($_POST['attendance'] as $student_id => $status){
@@ -35,7 +42,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 $students = mysqli_query(
     $conn,
-    "SELECT * FROM students ORDER BY name ASC"
+    "SELECT *
+     FROM students
+     WHERE teacher_id='$teacher_id'
+     ORDER BY name ASC"
 );
 
 include("../includes/header.php");

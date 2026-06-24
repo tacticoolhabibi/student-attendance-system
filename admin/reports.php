@@ -8,6 +8,8 @@ if(!isset($_SESSION['teacher_id'])){
 
 include("../config/db.php");
 
+$teacher_id = $_SESSION['teacher_id'];
+
 $selected_date = "";
 
 if(isset($_GET['attendance_date'])){
@@ -21,6 +23,7 @@ if(isset($_GET['attendance_date'])){
          JOIN students
          ON attendance.student_id = students.id
          WHERE attendance.attendance_date='$selected_date'
+         AND students.teacher_id='$teacher_id'
          ORDER BY students.name ASC"
     );
 }
@@ -45,6 +48,8 @@ $percentage_report = mysqli_query(
 
      LEFT JOIN attendance
      ON students.id = attendance.student_id
+
+     WHERE students.teacher_id='$teacher_id'
 
      GROUP BY students.id
 
@@ -122,9 +127,7 @@ include("../includes/navbar.php");
                         <tr>
 
                             <td><?php echo $row['student_id']; ?></td>
-
                             <td><?php echo $row['name']; ?></td>
-
                             <td><?php echo $row['status']; ?></td>
 
                         </tr>
@@ -184,25 +187,11 @@ include("../includes/navbar.php");
 
                     <tr>
 
-                        <td>
-                            <?php echo $row['student_id']; ?>
-                        </td>
-
-                        <td>
-                            <?php echo $row['name']; ?>
-                        </td>
-
-                        <td>
-                            <?php echo $row['present_count']; ?>
-                        </td>
-
-                        <td>
-                            <?php echo $row['total_count']; ?>
-                        </td>
-
-                        <td>
-                            <?php echo $percentage; ?>%
-                        </td>
+                        <td><?php echo $row['student_id']; ?></td>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['present_count']; ?></td>
+                        <td><?php echo $row['total_count']; ?></td>
+                        <td><?php echo $percentage; ?>%</td>
 
                     </tr>
 
