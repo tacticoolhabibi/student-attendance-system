@@ -48,9 +48,21 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const darkModeBtn = document.getElementById("darkModeBtn");
 
+    function updateButtonText(){
+
+        if(document.body.classList.contains("dark-mode")){
+            darkModeBtn.innerHTML = "☀️ Light Mode";
+        }else{
+            darkModeBtn.innerHTML = "🌙 Dark Mode";
+        }
+
+    }
+
     if(localStorage.getItem("theme") === "dark"){
         document.body.classList.add("dark-mode");
     }
+
+    updateButtonText();
 
     darkModeBtn.addEventListener("click", function(){
 
@@ -61,6 +73,8 @@ document.addEventListener("DOMContentLoaded", function(){
         }else{
             localStorage.setItem("theme","light");
         }
+
+        updateButtonText();
 
     });
 
