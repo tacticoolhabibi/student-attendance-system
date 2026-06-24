@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['user_id'])){
+if(!isset($_SESSION['teacher_id'])){
     header("Location: ../login.php");
     exit();
 }
@@ -40,7 +40,7 @@ include("../includes/navbar.php");
 
 <div class="container mt-4">
 
-    <h2>Welcome, <?php echo $_SESSION['fullname']; ?></h2>
+    <h2>Welcome, <?php echo $_SESSION['teacher_name']; ?></h2>
 
     <div class="row mt-4">
 
