@@ -2,24 +2,28 @@
     <div class="container-fluid">
 
         <span class="navbar-brand">
-            Student Attendance System
+            Teacher Attendance Portal
         </span>
 
-        <div>
+        <div class="d-flex align-items-center">
 
-            <a href="/attendance_system/admin/dashboard.php" class="btn btn-primary">
+            <span class="text-white me-3">
+                Welcome, <?php echo $_SESSION['teacher_name']; ?>
+            </span>
+
+            <a href="/attendance_system/admin/dashboard.php" class="btn btn-primary me-1">
                 Dashboard
             </a>
 
-            <a href="/attendance_system/admin/students.php" class="btn btn-success">
+            <a href="/attendance_system/admin/students.php" class="btn btn-success me-1">
                 Students
             </a>
 
-            <a href="/attendance_system/admin/attendance.php" class="btn btn-warning">
+            <a href="/attendance_system/admin/attendance.php" class="btn btn-warning me-1">
                 Attendance
             </a>
 
-            <a href="/attendance_system/admin/reports.php" class="btn btn-info">
+            <a href="/attendance_system/admin/reports.php" class="btn btn-info me-1">
                 Reports
             </a>
 

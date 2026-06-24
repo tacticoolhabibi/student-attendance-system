@@ -64,7 +64,22 @@ include("../includes/navbar.php");
 
 <div class="container mt-4">
 
-    <h2>Welcome, <?php echo $_SESSION['teacher_name']; ?></h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <h2>
+        Welcome, <?php echo $_SESSION['teacher_name']; ?>
+    </h2>
+
+    <div class="text-end">
+        <h5 class="mb-1">
+            <?php echo date("l, d F Y"); ?>
+        </h5>
+        <small class="text-muted">
+            <?php echo date("h:i A"); ?>
+        </small>
+    </div>
+
+</div>
 
     <div class="row mt-4">
 
