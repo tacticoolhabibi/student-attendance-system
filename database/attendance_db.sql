@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2026 at 08:28 AM
+-- Generation Time: Jun 30, 2026 at 08:41 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,19 @@ CREATE TABLE `attendance` (
 INSERT INTO `attendance` (`id`, `student_id`, `attendance_date`, `status`) VALUES
 (10, 3, '2026-06-23', 'Absent'),
 (13, 8, '2026-06-24', 'Present'),
-(14, 3, '2026-06-24', 'Present');
+(14, 3, '2026-06-24', 'Present'),
+(15, 9, '2026-06-24', 'Absent'),
+(16, 10, '2026-06-24', 'Present'),
+(17, 11, '2026-06-24', 'Present'),
+(18, 12, '2026-06-24', 'Present'),
+(19, 13, '2026-06-24', 'Present'),
+(20, 14, '2026-06-24', 'Absent'),
+(21, 12, '2026-06-27', 'Present'),
+(22, 13, '2026-06-27', 'Absent'),
+(23, 14, '2026-06-27', 'Present'),
+(24, 12, '2026-06-30', 'Present'),
+(25, 13, '2026-06-30', 'Present'),
+(26, 14, '2026-06-30', 'Present');
 
 -- --------------------------------------------------------
 
@@ -64,7 +76,13 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`id`, `student_id`, `name`, `department`, `semester`, `teacher_id`) VALUES
 (3, '242-112-011', 'Tanvir Rahman Rahi', 'CSE', '6th', 1),
-(8, '242-112-018', 'Ashik Dewan', 'CSE', '6th', 1);
+(8, '242-112-018', 'Ashik Dewan', 'CSE', '6th', 1),
+(9, '45', 'ButterCup', 'CSE', '6th', 4),
+(10, '634', 'Jihadin', 'English', '4th', 4),
+(11, '192', 'Mahfuz', 'Law', '2nd', 4),
+(12, '1', 'ST1', 'Dep1', '1st', 2),
+(13, '2', 'ST2', 'Law', '6th', 2),
+(14, '3', 'ST3', 'Law', '2nd', 2);
 
 -- --------------------------------------------------------
 
@@ -88,7 +106,8 @@ CREATE TABLE `teachers` (
 INSERT INTO `teachers` (`id`, `fullname`, `email`, `username`, `password`, `created_at`) VALUES
 (1, 'Sleepy Bearez', 'sleepybearez@testing.com', 'sleepy', '123456', '2026-06-24 04:56:58'),
 (2, 'Teacher1', 'teacher1@gmail.com', 'teacher1', '12345', '2026-06-24 05:03:45'),
-(3, 'Teacher2', 'teacher2@gmail.com', 'teacher2', '12345', '2026-06-24 05:09:23');
+(3, 'Teacher2', 'teacher2@gmail.com', 'teacher2', '12345', '2026-06-24 05:09:23'),
+(4, 'Sarwar Ahmed', 'sarwarahmed@hotmail.com', 'sarwar', '12345', '2026-06-24 06:42:47');
 
 -- --------------------------------------------------------
 
@@ -149,19 +168,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
