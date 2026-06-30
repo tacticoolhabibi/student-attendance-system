@@ -82,3 +82,81 @@ body{
 .dark-mode .card {
     box-shadow: 0 0 15px rgba(255,255,255,0.05) !important;
 }
+
+/* Landing page */
+
+.landing-description{
+    color:#555;
+    line-height:1.8;
+}
+
+.dark-mode .landing-description{
+    color:#d6d6d6;
+}
+
+.btn-lg{
+    border-radius:12px;
+    padding:12px 24px;
+}
+
+img{
+    user-select:none;
+}
+
+/* ==========================================
+   Landing Page
+========================================== */
+
+body{
+    transition: background-color .3s ease,color .3s ease;
+}
+
+.landing-description{
+    color:#555;
+    line-height:1.8;
+    transition:.3s;
+}
+
+.dark-mode{
+
+    background:#121212 !important;
+    color:#fff !important;
+
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6{
+
+    color:#fff !important;
+
+}
+
+.dark-mode .landing-description{
+
+    color:#d4d4d4 !important;
+
+}
+
+.dark-mode .badge{
+
+    color:#fff;
+
+}
+
+.dark-mode .btn-dark{
+
+    background:#f8f9fa;
+    color:#111;
+    border-color:#f8f9fa;
+
+}
+
+.dark-mode img{
+
+    filter:brightness(.95);
+
+}

@@ -1,83 +1,87 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
     <div class="container-fluid">
 
-        <span class="navbar-brand">
+        <a class="navbar-brand fw-bold" href="/attendance_system/admin/dashboard.php">
+            <i class="bi bi-mortarboard-fill"></i>
             Teacher Attendance Portal
-        </span>
+        </a>
 
-        <div class="d-flex align-items-center">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <span class="text-white me-3">
-                Welcome, <?php echo $_SESSION['teacher_name']; ?>
-            </span>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
 
-            <button
-                id="darkModeBtn"
-                class="btn btn-secondary me-2">
-                🌙 Dark Mode
-            </button>
+            <ul class="navbar-nav align-items-center">
 
-            <a href="/attendance_system/admin/dashboard.php" class="btn btn-primary me-1">
-                Dashboard
-            </a>
+                <li class="nav-item me-3">
 
-            <a href="/attendance_system/admin/students.php" class="btn btn-success me-1">
-                Students
-            </a>
+                    <span class="text-white">
+                        <i class="bi bi-person-circle"></i>
+                        Welcome,
+                        <strong><?php echo $_SESSION['teacher_name']; ?></strong>
+                    </span>
 
-            <a href="/attendance_system/admin/attendance.php" class="btn btn-warning me-1">
-                Attendance
-            </a>
+                </li>
 
-            <a href="/attendance_system/admin/reports.php" class="btn btn-info me-1">
-                Reports
-            </a>
+                <li class="nav-item me-2">
 
-            <a href="/attendance_system/logout.php" class="btn btn-danger">
-                Logout
-            </a>
+                    <button
+                        id="darkModeBtn"
+                        class="btn btn-outline-light">
+                        🌙 Dark Mode
+                    </button>
+
+                </li>
+
+                <li class="nav-item me-2">
+
+                    <a href="/attendance_system/admin/dashboard.php" class="btn btn-primary">
+                        <i class="bi bi-speedometer2"></i>
+                        Dashboard
+                    </a>
+
+                </li>
+
+                <li class="nav-item me-2">
+
+                    <a href="/attendance_system/admin/students.php" class="btn btn-success">
+                        <i class="bi bi-people-fill"></i>
+                        Students
+                    </a>
+
+                </li>
+
+                <li class="nav-item me-2">
+
+                    <a href="/attendance_system/admin/attendance.php" class="btn btn-warning">
+                        <i class="bi bi-calendar-check"></i>
+                        Attendance
+                    </a>
+
+                </li>
+
+                <li class="nav-item me-2">
+
+                    <a href="/attendance_system/admin/reports.php" class="btn btn-info text-white">
+                        <i class="bi bi-bar-chart-fill"></i>
+                        Reports
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a href="/attendance_system/logout.php" class="btn btn-danger">
+                        <i class="bi bi-box-arrow-right"></i>
+                        Logout
+                    </a>
+
+                </li>
+
+            </ul>
 
         </div>
 
     </div>
 </nav>
-
-<script>
-
-document.addEventListener("DOMContentLoaded", function(){
-
-    const darkModeBtn = document.getElementById("darkModeBtn");
-
-    function updateButtonText(){
-
-        if(document.body.classList.contains("dark-mode")){
-            darkModeBtn.innerHTML = "☀️ Light Mode";
-        }else{
-            darkModeBtn.innerHTML = "🌙 Dark Mode";
-        }
-
-    }
-
-    if(localStorage.getItem("theme") === "dark"){
-        document.body.classList.add("dark-mode");
-    }
-
-    updateButtonText();
-
-    darkModeBtn.addEventListener("click", function(){
-
-        document.body.classList.toggle("dark-mode");
-
-        if(document.body.classList.contains("dark-mode")){
-            localStorage.setItem("theme","dark");
-        }else{
-            localStorage.setItem("theme","light");
-        }
-
-        updateButtonText();
-
-    });
-
-});
-
-</script>
